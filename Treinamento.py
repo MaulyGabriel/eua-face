@@ -34,7 +34,7 @@ def Treinamento():
 	codigos   = []
 	nomes     = []
 
-	for imagem in glob.glob(os.path.join("imagens","*.jpg")):
+	for imagem in glob.glob(os.path.join("/home/pi/Alice/imagens","*.jpg")):
 
 		image = fr.load_image_file(imagem)
 		unknown_face = fr.face_encodings(image)
@@ -43,7 +43,8 @@ def Treinamento():
 
 			encodings.append(fr.face_encodings(image)[0])
 			lista = GeraListaDeString(str(imagem), '/')
-			lista = GeraListaDeString(str(lista[1]), '.')
+			print(lista)
+			lista = GeraListaDeString(str(lista[5]), '.')
 			print(lista)
 			codigos.append(lista[0])
 			nomes.append(lista[1])
@@ -52,9 +53,9 @@ def Treinamento():
 
 
 
-	np.save('modelo/imagens.npy',encodings)
-	np.save('modelo/codigos.npy',codigos)
-	np.save('modelo/nomes.npy',nomes)
+	np.save('/home/pi/Alice/modelo/imagens.npy',encodings)
+	np.save('/home/pi/Alice/modelo/codigos.npy',codigos)
+	np.save('/home/pi/Alice/modelo/nomes.npy',nomes)
 	print('Treinamento finalizadao')
 
 

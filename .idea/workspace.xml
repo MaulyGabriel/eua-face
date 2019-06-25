@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8634894-51de-49e9-9f69-862a69e7efb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Treinamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treinamento.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/1010.MATHEUS.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/1011.JUNIOR.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/1012.ISRAEL.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/1013.LEONARDO.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelo/codigos.npy" beforeDir="false" afterPath="$PROJECT_DIR$/modelo/codigos.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelo/imagens.npy" beforeDir="false" afterPath="$PROJECT_DIR$/modelo/imagens.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelo/nomes.npy" beforeDir="false" afterPath="$PROJECT_DIR$/modelo/nomes.npy" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Treinamento.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="302">
+              <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -81,6 +74,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -143,8 +137,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Treinamento.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="302">
+          <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
         </state>
       </provider>
     </entry>
