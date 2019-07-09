@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8634894-51de-49e9-9f69-862a69e7efb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/imagens/2015.RENATO HERSZ.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imagens/2016.CHRIS RHODES.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Operador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Operador.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Treinamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treinamento.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/1010.MATHEUS.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imagens/1010.MATTHEUS.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/2011.BARBOUR.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imagens/2011.SANDRA BARBOUR.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/2012.DEML.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imagens/2012.WOLFGANG DEML.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagens/2013.CLARK.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imagens/2013.SUZANNE CLARK.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelo/codigos.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelo/imagens.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelo/nomes.npy" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Treinamento.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="195">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#25#54#0" expanded="true" />
               </folding>
@@ -86,6 +82,11 @@
               <item name="eua-face" type="462c0819:PsiDirectoryNode" />
               <item name="imagens" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="eua-face" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eua-face" type="462c0819:PsiDirectoryNode" />
+              <item name="modelo" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -125,7 +126,7 @@
     <frame x="45" y="25" width="1875" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.256" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.256" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -136,7 +137,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32876712" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -160,8 +161,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Treinamento.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#25#54#0" expanded="true" />
           </folding>
