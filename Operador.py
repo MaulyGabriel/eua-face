@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
 # -*- encoding: utf-8
-"""
-	Reconhecimento facial
-		
-		Este projeto tem como objetivo principal reconhecer a face do operador e estabelecer uma comunicação com o
-		MAG-100, efetuando o cadastro do operador e o reconhecimento do mesmo em troca de turno, liberação do equipamento...
-		
-		Utiliza-se as seguintes bibliotecas (na ordem da importação):
-		opencv, dlib, face_recognition, glob, multiprocessing, numpy, os, pyserial, shutil, threading, thread, time  e treinamento
-"""
+
 from __future__ import print_function
 from imutils.video import WebcamVideoStream
 from imutils.video import FPS
@@ -26,7 +18,7 @@ import shutil
 import threading as th
 import _thread as tr  # mudar para _thread
 import time
-from Treinamento import GeraListaDeString, Treinamento
+from Treinamento import split_string, train
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="ID da camera que deseja realizar o reconhecimento", default=0)
@@ -297,7 +289,7 @@ def Reconhecimento(trName, bordo, flags, conn):
                 nomes = list(np.load('/home/pi/Alice/modelo/nomes.npy'))
                 imagens = list(np.load('/home/pi/Alice/modelo/imagens.npy'))
                 
-                listaDados = GeraListaDeString(listaDados, ',')
+                listaDados = split_string(listaDados, ',')
 
                 codigo = listaDados[3]
 
@@ -323,9 +315,9 @@ def Reconhecimento(trName, bordo, flags, conn):
 
                 EnviarMensagem(bordo, hexadecimal, 10)
 
-                train = multiprocessing.Process(target=Treinamento())
-                train.start()
-                train.join()
+                train_face = multiprocessing.Process(target=train())
+                train_face.start()
+                train_face.join()
 
                 print('[TREINAMENTO REALIZADO]')
 
@@ -413,13 +405,9 @@ def Reconhecimento(trName, bordo, flags, conn):
                     n += 1
         fps.update()
 
+
 if __name__ == '__main__':
-    """
-        Iniciando a aplicação
-            bordo: obj, contém a conexão com a porta serial
-            flags: Bandeiras que sinalizam as ações a serem executadas [Ouvinte,Reconhecimento,Cadastro,TrocaDeTurno,AguardaTrocaDeTurno]
-            recebe,envia: agrs a serem compartilhados entre os processos de reconhecimento  e recebimento de msg
-    """
+
     bordo = Bordo()
     recebe, envia = multiprocessing.Pipe()
     flags = multiprocessing.Array('i', [1, 1, 0, 0, 1])
