@@ -37,9 +37,9 @@ def train():
 		else:
 			print('Face nao encontrada', image)
 
-	#np.save('/home/pi/Alice/modelo/imagens.npy',encodings)
-	#np.save('/home/pi/Alice/modelo/codes.npy',codes)
-	#np.save('/home/pi/Alice/modelo/names.npy',names)
+	np.save('/home/pi/Alice/modelo/imagens.npy',encodings)
+	np.save('/home/pi/Alice/modelo/codes.npy',codes)
+	np.save('/home/pi/Alice/modelo/names.npy',names)
 	print('Treinamento finalizadao')
 
 
