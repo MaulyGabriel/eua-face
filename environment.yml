@@ -1,0 +1,52 @@
+name: reconhecimento-facial
+channels:
+  - menpo
+  - conda-forge
+  - defaults
+dependencies:
+  - blas=1.0=mkl
+  - boost=1.59.0=py36_0
+  - bzip2=1.0.6=h14c3975_5
+  - ca-certificates=2018.03.07=0
+  - certifi=2018.10.15=py36_0
+  - intel-openmp=2019.1=144
+  - jpeg=9b=h024ee3a_2
+  - libedit=3.1.20170329=h6b74fdf_2
+  - libffi=3.2.1=hd88cf55_4
+  - libgcc-ng=8.2.0=hdf63c60_1
+  - libgfortran-ng=7.3.0=hdf63c60_0
+  - libpng=1.6.35=hbc83047_0
+  - libstdcxx-ng=8.2.0=hdf63c60_1
+  - mkl=2018.0.3=1
+  - mkl_fft=1.0.6=py36h7dd41cf_0
+  - mkl_random=1.0.1=py36h4414c95_1
+  - ncurses=6.1=hf484d3e_0
+  - numpy-base=1.15.4=py36h81de0dd_0
+  - openssl=1.0.2p=h14c3975_0
+  - pip=18.1=py36_0
+  - python=3.6.2=0
+  - readline=6.2=2
+  - setuptools=40.5.0=py36_0
+  - sqlite=3.13.0=0
+  - tk=8.5.18=0
+  - wheel=0.32.2=py36_0
+  - xz=5.2.4=h14c3975_4
+  - zlib=1.2.11=ha838bed_2
+  - pip:
+    - click==7.0
+    - dlib==19.16.0
+    - face-recognition==1.2.3
+    - face-recognition-models==0.3.0
+    - flask==1.0.2
+    - imutils==0.5.1
+    - itsdangerous==1.1.0
+    - jinja2==2.10
+    - markupsafe==1.1.0
+    - numpy==1.15.4
+    - opencv-python==3.4.3.18
+    - pillow==5.3.0
+    - progress-bar==8
+    - pygame==1.9.4
+    - pyserial==3.4
+    - werkzeug==0.14.1
+

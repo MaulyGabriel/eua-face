@@ -6,6 +6,7 @@ import os
 
 from time import time
 
+
 def split_string(string, char):
 
 	data = list(string.split(char))
@@ -15,33 +16,37 @@ def split_string(string, char):
 
 def train():
 
-	encodings = []
+	print('Train init ...')
+
+	init = time()
+
+	faces = []
 	codes = []
 	names = []
 
-	for imagem in glob.glob(os.path.join("/home/pi/Alice/imagens", "*.jpg")):
+	for file in glob.glob(os.path.join("/home/pi/Alice/imagens", "*.jpg")):
 
-		image = fr.load_image_file(imagem)
+		image = fr.load_image_file(file)
 		unknown_face = fr.face_encodings(image)
 
 		if len(unknown_face) > 0:
 
-			encodings.append(fr.face_encodings(image)[0])
-			print(split_string(str(imagem), '/'))
-			lista = split_string(str(imagem), '/')
-			print(lista)
-			lista = split_string(str(lista[5]), '.')
-			print(lista)
-			codes.append(lista[0])
-			names.append(lista[1])
+			faces.append(fr.face_encodings(image)[0])
+			data = split_string(str(file), '/')
+			data = split_string(str(data[5]), '.')
+			codes.append(data[0])
+			names.append(data[1])
+
+			print(data[1], 'success')
 
 		else:
-			print('Face nao encontrada', image)
+			print(file, ' error')
 
-	np.save('/home/pi/Alice/modelo/imagens.npy',encodings)
+	np.save('/home/pi/Alice/modelo/imagens.npy',faces)
 	np.save('/home/pi/Alice/modelo/codes.npy',codes)
 	np.save('/home/pi/Alice/modelo/names.npy',names)
-	print('Treinamento finalizadao')
+
+	print('train end', time() - init)
 
 
 def train_pc():
@@ -80,6 +85,6 @@ def train_pc():
 	print('Train end: ', time() - init)
 
 
-#train_pc()
+train_pc()
 
 
