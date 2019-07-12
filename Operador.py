@@ -174,7 +174,7 @@ def recognition(board, flags, conn):
 
     codes, names, images = load_models()
 
-    vs = WebcamVideoStream(src=1).start()
+    vs = WebcamVideoStream(src=0).start()
     fps = FPS().start()
 
     while True:

@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8634894-51de-49e9-9f69-862a69e7efb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Operador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Operador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treinamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treinamento.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mkdocs.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/img/logo.icon" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Operador.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="117" column="31" lean-forward="true" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="31" />
+            <state relative-caret-position="506">
+              <caret line="177" column="23" lean-forward="true" selection-start-line="177" selection-start-column="23" selection-end-line="177" selection-end-column="23" />
               <folding>
                 <element signature="e#47#84#0" expanded="true" />
                 <element signature="e#425#732#0" />
@@ -43,7 +38,6 @@
                 <element signature="e#2290#2444#0" />
                 <element signature="e#2718#2771#0" />
                 <element signature="e#2774#3614#0" />
-                <element signature="e#3692#8355#0" />
               </folding>
             </state>
           </provider>
@@ -291,8 +285,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Operador.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="117" column="31" lean-forward="true" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="31" />
+        <state relative-caret-position="506">
+          <caret line="177" column="23" lean-forward="true" selection-start-line="177" selection-start-column="23" selection-end-line="177" selection-end-column="23" />
           <folding>
             <element signature="e#47#84#0" expanded="true" />
             <element signature="e#425#732#0" />
@@ -302,7 +296,6 @@
             <element signature="e#2290#2444#0" />
             <element signature="e#2718#2771#0" />
             <element signature="e#2774#3614#0" />
-            <element signature="e#3692#8355#0" />
           </folding>
         </state>
       </provider>
