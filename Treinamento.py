@@ -7,9 +7,9 @@ import os
 from time import time
 
 
-def split_string(string, char):
+def split_string(value, char):
 
-	data = list(string.split(char))
+	data = list(value.split(char))
 
 	return data
 
@@ -24,7 +24,7 @@ def train():
 	codes = []
 	names = []
 
-	for file in glob.glob(os.path.join("/home/pi/Alice/imagens", "*.jpg")):
+	for file in glob.glob(os.path.join("/home/pi/Alice/images", "*.jpg")):
 
 		image = fr.load_image_file(file)
 		unknown_face = fr.face_encodings(image)
@@ -42,9 +42,9 @@ def train():
 		else:
 			print(file, ' error')
 
-	np.save('/home/pi/Alice/modelo/imagens.npy',faces)
-	np.save('/home/pi/Alice/modelo/codes.npy',codes)
-	np.save('/home/pi/Alice/modelo/names.npy',names)
+	np.save('/home/pi/Alice/models/images.npy', faces)
+	np.save('/home/pi/Alice/models/codes.npy', codes)
+	np.save('/home/pi/Alice/models/names.npy', names)
 
 	print('train end', time() - init)
 
@@ -59,7 +59,7 @@ def train_pc():
 
 	init = time()
 
-	for file in glob.glob(os.path.join("imagens", "*jpg")):
+	for file in glob.glob(os.path.join("images", "*jpg")):
 
 		image = fr.load_image_file(file)
 		not_face = fr.face_encodings(image)
@@ -78,13 +78,8 @@ def train_pc():
 		else:
 			print(file, ': error')
 
-	np.save('modelo/imagens.npy', faces)
-	np.save('modelo/codes.npy', codes)
-	np.save('modelo/names.npy', names)
+	np.save('models/images.npy', faces)
+	np.save('models/codes.npy', codes)
+	np.save('models/names.npy', names)
 
 	print('Train end: ', time() - init)
-
-
-train_pc()
-
-

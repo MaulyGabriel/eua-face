@@ -4,230 +4,157 @@
 from __future__ import print_function
 from imutils.video import WebcamVideoStream
 from imutils.video import FPS
-import argparse
 import imutils
 import cv2
 import dlib
 import face_recognition as fr
-import glob
-import multiprocessing
+import multiprocessing as mp
 import numpy as np
 import os
 import serial
 import shutil
-import threading as th
-import _thread as tr  # mudar para _thread
+import _thread as tr
 import time
 from Treinamento import split_string, train
 
-ap = argparse.ArgumentParser()
-ap.add_argument("-v", "--video", help="ID da camera que deseja realizar o reconhecimento", default=0)
-args = vars(ap.parse_args())
 
-# configuracao dos parametors da porta serial
-porta = '/dev/ttyUSB0'  # '/dev/ttyAMA0'
-baudrate = 9600
-timeout = 1
-camera = 0
-
-
-def CheckSum(hexadecimal):
-    """
-        Responsável pela validação do hexadecimal enviado
-        na troca de informações entre o Rasp e MAG-100.
-
-        Args:
-            hexadecimal: string a ser gerado o hexadecimal
-    """
-    verificador = 0
+def check_sum(hexadecimal):
+    validator = 0
 
     for char in str(hexadecimal):
-        verificador = verificador ^ ord(char)
+        validator = validator ^ ord(char)
 
     var = ''
 
-    retorno = hex(verificador)
+    value = hex(validator)
 
-    tamanho = len(retorno)
-
-    if (tamanho == 3):
-        var = '0' + retorno[2]
-    elif (tamanho == 4):
-        var = retorno[2:4]
+    if len(value) == 3:
+        var = '0' + value[2]
+    elif len(value) == 4:
+        var = value[2:4]
     else:
-        print("[ERRO - NAO FOI POSSIVEL GERAR O CHECKSUM]")
+        print("error in check sum")
 
     return var.upper()
 
 
-def Bordo():
-    """
-        Responsável pela comunicação da porta serial
+def init_board():
+    try:
 
-        Return:
-            retorna o objeto bordo, contém a conexao com a
-            porta serial
-    """
-    bordo = serial.Serial(porta, baudrate=baudrate, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE,
-                          bytesize=serial.EIGHTBITS, timeout=timeout)
+        os.system('sudo chmod -R 777 /dev/ttyUSB0')
 
-    return bordo
+        port = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, parity=serial.PARITY_NONE,
+                             stopbits=serial.STOPBITS_ONE,
+                             bytesize=serial.EIGHTBITS, timeout=1)
+
+        return port
+
+    except serial.SerialException:
+        print('Verify your permission')
+
+        return None
 
 
-def DetectaRostoCadastro(umbral, tempo,vs,fps):
-    """
-        Responsável por reconhecer a face na imagem de cadastro
-        de um novo operador, utiliza o classificador da blibioteca DLIB
-
-        Args:
-            umbral: int, com qual confianca desejo identificar a face
-            tempo: int, tempo limite para identificar a face
-        Return:
-            retorna o frame capturado
-    """
+def identifier_face(mean, tempo, camera, fps):
     frame = np.array([])
 
-    facesDetectadas = ''
+    face_found = ''
 
     detector = dlib.get_frontal_face_detector()
 
     i = 0
-    while len(facesDetectadas) < 1:
+
+    while len(face_found) < 1:
         i += 1
-        frame = vs.read()
-        facesDetectadas, confianca, idx = detector.run(frame, 0, umbral)
+        frame = camera.read()
+        face_found, confidence, idx = detector.run(frame, 0, mean)
 
         if i == tempo:
             frame = np.array([])
             break
-        print("CADASTRO REALIZADO:", len(facesDetectadas))
+
+        print("operator create with success :", len(face_found))
+
         fps.update()
+
     return frame
 
 
-
-def AguardandoOk(mensagem, tempo):
-    """
-        Responsável por aguardar o $POK do bordo
-
-        Args:
-            mensagem: string a ser analisada se aguarda ou não
-            tempo: int , tempo limite para aguardar
-    """
+def wait_ok(message, tempo):
     flag = 0
+
     while tempo > 1 and flag == 0:
-        if bordo.inWaiting() > 0:
-            msg = bordo.readline().decode("utf-8", "replace")
+
+        if board.inWaiting() > 0:
+            msg = board.readline().decode("utf-8", "replace")
             if msg[:4] == "$POK":
                 flag = 1
-                print('[ENCONTREI O $POK]')
+                print('found ok')
                 break
             else:
-                bordo.write(mensagem.encode())
+                board.write(message.encode())
             tempo -= 1
         else:
             tempo -= 1
             time.sleep(0.5)
 
 
-def EnviarMensagem(bordo, mensagem, tempo):
-    """
-        Responsável por enviar mensagens ao bordo
+def send_message(board, message, tempo):
+    board.write(message.encode())
 
-        Args:
-            bordo: conexao com a porta serial
-            mensagem: string, mensagem a ser enviada
-            tempo: int, tempo limite para envio
-    """
-    bordo.write(mensagem.encode())
-    print('[ALICE] _ ', mensagem.upper())
-    if mensagem[6] == ',':
+    if message[6] == ',':
         flags[0] = 0
         time.sleep(0.5)
-        AguardandoOk(mensagem, tempo)
+        wait_ok(message, tempo)
         flags[0] = 1
 
 
+def load_models():
 
-def CarregaNovoModelo():
-    """
-        Responsável por carregar os novos modelos treinados
+    codes = np.load('/home/pi/Alice/models/codes.npy')
+    names = np.load('/home/pi/Alice/models/names.npy')
+    images = np.load('/home/pi/Alice/models/images.npy')
 
-        Return:
-            retorna os modelos atualizados
-    """
-    codigos = np.load('/home/pi/Alice/modelo/codigos.npy')
-    nomes = np.load('/home/pi/Alice/modelo/nomes.npy')
-    imagens = np.load('/home/pi/Alice/modelo/imagens.npy')
-
-    return codigos, nomes, imagens
+    return codes, names, images
 
 
-def Timer(trName, timeout):
-    """
-        Responsável por aguardar a troca de turno dos
-        operadores
-
-        Args:
-            trName: string, nome do procesos
-            tempo: int, tempo para a troca de turno
-    """
+def alter_turn(timeout):
     time.sleep(timeout)
     flags[4] = 1
     flags[3] = 0
 
 
-def PortaSerial(trName, bordo, flags, conn):
-    """
-        Responsável pelo atendimento das solicitaçes do
-        bordo
+def read_serial(board, flags, conn):
 
-        Args:
-            trName: string, nome do serviço
-            bordo: obj, conexao com a porta serial
-            flags: array de flags controladoras de ações
-            conn: obj, contem as informações de um novo do operador a ser cadastrado
-    """
-    print(trName)
+    print('serial starting ...')
 
     while True:
         pass
 
         while flags[0]:
 
-            if (bordo.inWaiting() > 0):
+            if board.inWaiting() > 0:
 
-                mensagem = bordo.readline().decode("utf-8", "replace")
+                message = board.readline().decode("utf-8", "replace")
 
-                if mensagem[:8] == '$PNEUL,C':
+                if message[:8] == '$PNEUL,C':
 
-                    EnviarMensagem(bordo, '$PNEUDOK,46\r\n', 1)
-                    
-                    idx = mensagem.find('*')
+                    send_message(board, '$PNEUDOK,46\r\n', 1)
+
+                    idx = message.find('*')
+
                     if idx != -1:
 
-                        if CheckSum(mensagem[:idx]) == mensagem[idx + 1:idx + 3]:
+                        if check_sum(message[:idx]) == message[idx + 1:idx + 3]:
 
-                            if (mensagem[9] == '0'):
-                                """
-                                    Caiu no cadastro do operador
-                                """
-                                count = 0;
+                            if message[9] == '0':
 
                                 flags[1] = 0
                                 flags[2] = 1
 
-                                
-                                conn.send(mensagem)
-                                print("[BORDO]", mensagem)
+                                conn.send(message)
+                            elif message[9] == '1':
 
-                                
-                            
-                            elif (mensagem[9] == '1'):
-                                """
-
-                                    Caiu na troca de turno
-                                """
                                 flags[1] = 0
                                 flags[3] = 1
 
@@ -235,188 +162,169 @@ def PortaSerial(trName, bordo, flags, conn):
                                 pass
 
 
-def Reconhecimento(trName, bordo, flags, conn):
-    """
-        Responsável pelo reconhecimento dos operadores e
-        cadastrado
+def recognition(board, flags, conn):
 
-        Args:
-            trName: string, nome do serviço
-            bordo: obj, conexao com a porta serial
-            flags: array de flags controladoras de ações
-            conn: obj, contem as informações de um novo do operador a ser cadastrado
-    """
-    print(trName)
+    print('recognition starting ....')
 
-    # controla ultimo operador
-    oldOperador = 0
-    trocaOperador = 0
+    old_operator = 0
+    turn_operator = 0
 
-    x = 0
-    n = 0
+    not_identified = 0
+    not_detected = 0
 
-    codigos, nomes, imagens = CarregaNovoModelo()
+    codes, names, images = load_models()
 
-    # inicializando a camera
-    vs = WebcamVideoStream(src=camera).start()
+    vs = WebcamVideoStream(src=1).start()
     fps = FPS().start()
 
     while True:
 
         if flags[3] and flags[4]:
-            """
-                Troca de Turno
-            """
-            EnviarMensagem(bordo, '$PNEUDOK,*46', 1)
-            trocaOperador = oldOperador
-            oldOperador = 0
-            tr.start_new_thread(Timer, ('Timer', 180,))
+            send_message(board, '$PNEUDOK,*46', 1)
+            turn_operator = old_operator
+            old_operator = 0
+            tr.start_new_thread(alter_turn, (180,))
             flags[4] = 0
             flags[1] = 1
 
         if flags[2]:
-            """
-                Cadastro de um novo operador
-            """
-                     
-            listaDados = conn.recv()            
 
-            frame = DetectaRostoCadastro(umbral=1.5, tempo=25, vs=vs,fps=fps)
+            list_data = conn.recv()
+
+            frame = identifier_face(mean=1.5, tempo=25, camera=vs, fps=fps)
 
             if frame.any():
 
-                codigos = list(np.load('/home/pi/Alice/modelo/codigos.npy'))
-                nomes = list(np.load('/home/pi/Alice/modelo/nomes.npy'))
-                imagens = list(np.load('/home/pi/Alice/modelo/imagens.npy'))
-                
-                listaDados = split_string(listaDados, ',')
+                codes = list(np.load('/home/pi/Alice/models/codigos.npy'))
+                names = list(np.load('/home/pi/Alice/models/nomes.npy'))
 
-                codigo = listaDados[3]
+                list_data = split_string(list_data, ',')
 
-                foto = imutils.resize(frame,width=480)
+                code = list_data[3]
 
-                if codigo in codigos:
-                    """
-                        Se já existe o operador cadastrado verifica se há imagem cadastrada
-                        move para o diretorio "olds" e atualiza a foto do operador, senão
-                        efetua o cadastro de um novo operador normalmente
-                    """
-                    idx = codigos.index(codigo)
-                    nome = nomes[idx]
-                    if os.path.isfile('/home/pi/Alice/imagens/' + codigo + '.' + nome + '.jpg'):
-                        shutil.move('/home/pi/Alice/imagens/' + codigo + '.' + nome + '.jpg',
-                                    '/home/pi/Alice/imagens/olds/' + codigo + '.' + nome + '.' + time.strftime(
+                photo = imutils.resize(frame, width=480)
+
+                if code in codes:
+
+                    idx = codes.index(code)
+                    nome = names[idx]
+
+                    if os.path.isfile('/home/pi/Alice/images/' + code + '.' + nome + '.jpg'):
+                        shutil.move('/home/pi/Alice/images/' + code + '.' + nome + '.jpg',
+                                    '/home/pi/Alice/images/olds/' + code + '.' + nome + '.' + time.strftime(
                                         "%Y%m%d%H%M") + '.jpg')
 
-                cv2.imwrite('/home/pi/Alice/imagens/' + codigo + '.' + listaDados[4] + '.jpg', foto)
-                hexadecimal = '$PNEUD,C,0,' + codigo + ',' + listaDados[4] + ',*' + CheckSum(
-                    '$PNEUD,C,0,' + codigo + ',' + listaDados[4] + ',') + '\r\n'
+                cv2.imwrite('/home/pi/Alice/images/' + code + '.' + list_data[4] + '.jpg', photo)
 
+                hexadecimal = '$PNEUD,C,0,' + code + ',' + list_data[4] + ',*' + check_sum(
+                    '$PNEUD,C,0,' + code + ',' + list_data[4] + ',') + '\r\n'
 
-                EnviarMensagem(bordo, hexadecimal, 10)
+                send_message(board, hexadecimal, 10)
 
-                train_face = multiprocessing.Process(target=train())
+                train_face = mp.Process(target=train())
                 train_face.start()
                 train_face.join()
 
-                print('[TREINAMENTO REALIZADO]')
+                codes, names, images = load_models()
 
-                codigos, nomes, imagens = CarregaNovoModelo()
-
-            
             else:
-                EnviarMensagem(bordo, '$PNEUD,C,0,-1,*01\r\n', 10)
+                send_message(board, '$PNEUD,C,0,-1,*01\r\n', 10)
 
-            
             flags[1] = 1
             flags[2] = 0
 
-
         while flags[1]:
-            """
-                Reconhecimento Facial
-            """
-            cods_operadores  = []
-            names_operadores = []
 
+            codes_operators = []
+            names_operators = []
 
             frame = vs.read()
             frame = imutils.resize(frame, width=400)
 
             rgb_frame = frame[:, :, ::-1]
 
-            face_cordenadas = fr.face_locations(rgb_frame)
-            face_codificacoes = fr.face_encodings(rgb_frame, face_cordenadas)
+            face_coordinates = fr.face_locations(rgb_frame)
+            face_coded = fr.face_encodings(rgb_frame, face_coordinates)
 
-            qtd_faces = len(face_cordenadas)
+            qtd_faces = len(face_coordinates)
 
             if qtd_faces != 0:
 
-                for (topo, direita, baixo, esquerda), face_codificacoes in zip(face_cordenadas, face_codificacoes):
+                for (topo, direita, baixo, esquerda), face_coded in zip(face_coordinates, face_coded):
 
-                    comparacao = fr.compare_faces(imagens, face_codificacoes, tolerance=0.6)
+                    face_result = fr.compare_faces(images, face_coded, tolerance=0.6)
 
-                    if True in comparacao:
-                        operador_encontrado = comparacao.index(True)
+                    if True in face_result:
+                        found_operator = face_result.index(True)
 
-                        cods_operadores.append(codigos[operador_encontrado])
+                        codes_operators.append(codes[found_operator])
 
-                        names_operadores.append(nomes[operador_encontrado])
+                        names_operators.append(names[found_operator])
 
-                cods_operadores = list(set(cods_operadores))
-                names_operadores = list(set(names_operadores))
-                faces_desconhecidas = qtd_faces - len(cods_operadores)
+                codes_operators = list(set(codes_operators))
+                names_operators = list(set(names_operators))
+                unknown_faces = qtd_faces - len(codes_operators)
 
-                if oldOperador == 0 and flags[3]:
+                if old_operator == 0 and flags[3]:
 
-                    if trocaOperador in cods_operadores:
-                        idx = cods_operadores.index(trocaOperador)
-                        del cods_operadores[idx]
-                        del names_operadores[idx]
+                    if turn_operator in codes_operators:
+                        idx = codes_operators.index(turn_operator)
+                        del codes_operators[idx]
+                        del names_operators[idx]
 
-                if oldOperador in cods_operadores:
-                    x = 0  # nao conhece a pessoa
-                    n = 0  # nao detecta a pessoa
-                    #print('[R. MESMO OPERADOR]')
+                if old_operator in codes_operators:
+                    not_identified = 0
+                    not_detected = 0
                 else:
 
-                    if len(cods_operadores) > 0:
-                        x = 0
-                        n = 0
-                        cod_autorizado = cods_operadores[0]
-                        nome_autorizdo = names_operadores[0]
-                        hexadecimal = '$PNEUD,C,1,' + str(cod_autorizado) + ',' + str(nome_autorizdo) + ',*' + CheckSum(
-                            '$PNEUD,C,1,' + str(cod_autorizado) + ',' + str(nome_autorizdo) + ',') + '\r\n'
-                        EnviarMensagem(bordo, hexadecimal, 10)
-                        oldOperador = cod_autorizado
+                    if len(codes_operators) > 0:
+
+                        not_identified = 0
+                        not_detected = 0
+
+                        code_authorized = codes_operators[0]
+                        name_authorized = names_operators[0]
+
+                        hexadecimal = '$PNEUD,C,1,' + str(code_authorized) + ',' + str(name_authorized) + ',*' + \
+                                      check_sum('$PNEUD,C,1,' + str(code_authorized) + ',' +
+                                                str(name_authorized) + ',') + '\r\n'
+
+                        send_message(board, hexadecimal, 10)
+
+                        old_operator = code_authorized
+
+                        print(name_authorized, " was recognized")
 
                     else:
-                        n = 0
-                        if x == 20:
-                            x = 0
+                        not_detected = 0
+
+                        if not_identified == 20:
+                            not_identified = 0
                         else:
-                            x += 1
+                            not_identified += 1
 
             else:
-                x = 0
-                if n == 20:
-                    n = 0
+                not_identified = 0
+
+                if not_detected == 20:
+                    not_detected = 0
                 else:
-                    n += 1
+                    not_detected += 1
         fps.update()
 
 
 if __name__ == '__main__':
+    board = init_board()
 
-    bordo = Bordo()
-    recebe, envia = multiprocessing.Pipe()
-    flags = multiprocessing.Array('i', [1, 1, 0, 0, 1])
+    receive, send = mp.Pipe()
 
-    PortaSerial = multiprocessing.Process(target=PortaSerial, args=('Bordo', bordo, flags, envia,))
-    Reconhecimento = multiprocessing.Process(target=Reconhecimento, args=('Reconhecimento', bordo, flags, recebe,))
+    flags = mp.Array('i', [1, 1, 0, 0, 1])
 
-    PortaSerial.start()
-    Reconhecimento.start()
+    serial_process = mp.Process(target=read_serial, args=(board, flags, send,))
+    recognition_process = mp.Process(target=recognition, args=(board, flags, receive,))
 
-    PortaSerial.join()
-    Reconhecimento.join()
+    serial_process.start()
+    recognition_process.start()
+
+    serial_process.join()
+    recognition_process.join()
