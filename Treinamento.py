@@ -80,6 +80,6 @@ def train_pc():
 	print('Train end: ', time() - init)
 
 
-train_pc()
+#train_pc()
 
 
