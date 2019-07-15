@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8634894-51de-49e9-9f69-862a69e7efb1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/rec-facial.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Operador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Operador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1013.HAROLD BIRCH.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/1013.HAROLD BIRCH.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mkdocs.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/images.npy" beforeDir="false" afterPath="$PROJECT_DIR$/models/images.npy" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +22,8 @@
         <entry file="file://$PROJECT_DIR$/docs/index.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="390">
-                <caret line="26" column="118" selection-start-line="26" selection-start-column="118" selection-end-line="26" selection-end-column="118" />
+              <first_editor relative-caret-position="1140">
+                <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
               </first_editor>
               <second_editor />
             </state>
@@ -27,17 +33,36 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Operador.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="177" column="23" lean-forward="true" selection-start-line="177" selection-start-column="23" selection-end-line="177" selection-end-column="23" />
+            <state relative-caret-position="822">
+              <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
               <folding>
                 <element signature="e#47#84#0" expanded="true" />
-                <element signature="e#425#732#0" />
-                <element signature="e#758#1065#0" />
-                <element signature="e#1120#1546#0" />
-                <element signature="e#1666#2123#0" />
-                <element signature="e#2290#2444#0" />
-                <element signature="e#2718#2771#0" />
-                <element signature="e#2774#3614#0" />
+                <element signature="e#424#731#0" />
+                <element signature="e#756#1150#0" />
+                <element signature="e#1204#1630#0" />
+                <element signature="e#1666#2074#0" />
+                <element signature="e#2122#2276#0" />
+                <element signature="e#2303#2498#0" />
+                <element signature="e#2528#2678#0" />
+                <element signature="e#2710#2763#0" />
+                <element signature="e#2808#3682#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Treinamento.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="85" selection-start-line="85" selection-end-line="85" />
+              <folding>
+                <element signature="e#24#53#0" expanded="true" />
+                <element signature="e#155#199#0" />
+                <element signature="e#217#905#0" />
+                <element signature="e#370#714#0" />
+                <element signature="e#478#680#0" />
+                <element signature="e#926#1546#0" />
               </folding>
             </state>
           </provider>
@@ -62,6 +87,9 @@
       <find>Webcam</find>
       <find>load</find>
       <find>board</find>
+      <find>load_models_pc</find>
+      <find>camera</find>
+      <find>load_models</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -72,22 +100,24 @@
       <list>
         <option value="$PROJECT_DIR$/site/index.html" />
         <option value="$PROJECT_DIR$/mkdocs.yml" />
-        <option value="$PROJECT_DIR$/Treinamento.py" />
         <option value="$PROJECT_DIR$/docs/index.md" />
+        <option value="$PROJECT_DIR$/Treinamento.py" />
         <option value="$PROJECT_DIR$/Operador.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2307" />
-    <option name="width" value="1677" />
-    <option name="height" value="941" />
+    <option name="x" value="45" />
+    <option name="y" value="25" />
+    <option name="width" value="938" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -98,18 +128,12 @@
             <path>
               <item name="eua-face" type="b2602c69:ProjectViewProjectNode" />
               <item name="eua-face" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="eua-face" type="b2602c69:ProjectViewProjectNode" />
-              <item name="eua-face" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -119,6 +143,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/site/assets/images" />
+      <recent name="$PROJECT_DIR$/site/assets/images/icons" />
       <recent name="$PROJECT_DIR$/site/img" />
     </key>
   </component>
@@ -148,10 +174,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
+    <frame x="45" y="25" width="1875" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25572917" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -162,32 +188,13 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" x="1920" y="28" width="1920" height="1052" id="Terminal" order="8" type="WINDOWED" visible="true" weight="0.31928346" />
+      <window_info active="true" anchor="bottom" x="1920" y="28" width="1920" height="1052" id="Terminal" maximized="true" order="8" type="WINDOWED" visible="true" weight="0.31928346" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26186666" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" x="1920" y="28" width="1920" height="1052" id="Terminal" order="8" type="WINDOWED" visible="true" weight="0.31928346" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/imagens/1012.ISRAEL.jpeg" />
@@ -198,34 +205,7 @@
         <state relative-caret-position="-209" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="46" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-          <folding>
-            <element signature="e#2630#2636#0" expanded="true" />
-            <element signature="e#3116#3123#0" expanded="true" />
-            <element signature="e#4797#4801#0" expanded="true" />
-            <element signature="e#4801#4805#0" expanded="true" />
-            <element signature="e#4831#4835#0" expanded="true" />
-            <element signature="e#4835#4839#0" expanded="true" />
-            <element signature="e#4884#4888#0" expanded="true" />
-            <element signature="e#4888#4892#0" expanded="true" />
-            <element signature="e#4907#4911#0" expanded="true" />
-            <element signature="e#4911#4915#0" expanded="true" />
-            <element signature="e#6052#6056#0" expanded="true" />
-            <element signature="e#6056#6060#0" expanded="true" />
-            <element signature="e#6089#6093#0" expanded="true" />
-            <element signature="e#6093#6097#0" expanded="true" />
-            <element signature="e#6142#6146#0" expanded="true" />
-            <element signature="e#6146#6150#0" expanded="true" />
-            <element signature="e#6168#6172#0" expanded="true" />
-            <element signature="e#6172#6176#0" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/site/index.html" />
     <entry file="file://$USER_HOME$/anaconda3/envs/reconhecimento-facial/lib/python3.6/multiprocessing/process.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -233,28 +213,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/1015.GABRIEL MAULY.jpg">
+    <entry file="file://$PROJECT_DIR$/images/1015.GABRIEL MAULY.jpg" />
+    <entry file="file://$PROJECT_DIR$/site/assets/images/favicon.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/1014.DANIEL PADRAO.jpg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/mkdocs.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/1011.MARCOS SARAIVA.jpg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/docs/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1140">
+            <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/1010.MATTHEUS.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/1012.CARLOS HERNAN HIRSCH.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/1013.HAROLD BIRCH.jpg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/rec-facial.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Treinamento.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
           <folding>
             <element signature="e#24#53#0" expanded="true" />
             <element signature="e#155#199#0" />
@@ -266,36 +256,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mkdocs.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/images/1010.MATTHEUS.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/index.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="390">
-            <caret line="26" column="118" selection-start-line="26" selection-start-column="118" selection-end-line="26" selection-end-column="118" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/images/1011.MARCOS SARAIVA.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/1013.HAROLD BIRCH.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/1014.DANIEL PADRAO.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/1012.CARLOS HERNAN HIRSCH.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Operador.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="177" column="23" lean-forward="true" selection-start-line="177" selection-start-column="23" selection-end-line="177" selection-end-column="23" />
+        <state relative-caret-position="822">
+          <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
           <folding>
             <element signature="e#47#84#0" expanded="true" />
-            <element signature="e#425#732#0" />
-            <element signature="e#758#1065#0" />
-            <element signature="e#1120#1546#0" />
-            <element signature="e#1666#2123#0" />
-            <element signature="e#2290#2444#0" />
-            <element signature="e#2718#2771#0" />
-            <element signature="e#2774#3614#0" />
+            <element signature="e#424#731#0" />
+            <element signature="e#756#1150#0" />
+            <element signature="e#1204#1630#0" />
+            <element signature="e#1666#2074#0" />
+            <element signature="e#2122#2276#0" />
+            <element signature="e#2303#2498#0" />
+            <element signature="e#2528#2678#0" />
+            <element signature="e#2710#2763#0" />
+            <element signature="e#2808#3682#0" />
           </folding>
         </state>
       </provider>

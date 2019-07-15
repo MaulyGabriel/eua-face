@@ -118,6 +118,15 @@ def load_models():
     return codes, names, images
 
 
+def load_models_pc():
+
+    codes = np.load('models/codes.npy')
+    names = np.load('models/names.npy')
+    images = np.load('models/images.npy')
+
+    return codes, names, images
+
+
 def alter_turn(timeout):
     time.sleep(timeout)
     flags[4] = 1
@@ -293,7 +302,7 @@ def recognition(board, flags, conn):
 
                         old_operator = code_authorized
 
-                        print(name_authorized, " was recognized")
+                        print(name_authorized, ": was recognized")
 
                     else:
                         not_detected = 0
@@ -314,6 +323,7 @@ def recognition(board, flags, conn):
 
 
 if __name__ == '__main__':
+
     board = init_board()
 
     receive, send = mp.Pipe()
