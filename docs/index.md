@@ -3,7 +3,6 @@
 
 ### Projeto
 
-,,,,,,,,,,,,
 Reconhecimento facial: identificação do operador presente no equipamento.
 
 Desenvolvedores: 

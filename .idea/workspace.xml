@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8634894-51de-49e9-9f69-862a69e7efb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/rec-facial.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Operador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Operador.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/1013.HAROLD BIRCH.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/1013.HAROLD BIRCH.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mkdocs.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/images.npy" beforeDir="false" afterPath="$PROJECT_DIR$/models/images.npy" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,23 +12,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docs/index.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1140">
-                <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
+              <first_editor relative-caret-position="75">
+                <caret line="5" selection-start-line="5" selection-end-line="5" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Operador.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="822">
-              <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+            <state relative-caret-position="207">
+              <caret line="79" column="16" lean-forward="true" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
               <folding>
                 <element signature="e#47#84#0" expanded="true" />
                 <element signature="e#424#731#0" />
@@ -46,6 +40,7 @@
                 <element signature="e#2528#2678#0" />
                 <element signature="e#2710#2763#0" />
                 <element signature="e#2808#3682#0" />
+                <element signature="e#3727#8497#0" />
               </folding>
             </state>
           </provider>
@@ -100,9 +95,9 @@
       <list>
         <option value="$PROJECT_DIR$/site/index.html" />
         <option value="$PROJECT_DIR$/mkdocs.yml" />
-        <option value="$PROJECT_DIR$/docs/index.md" />
         <option value="$PROJECT_DIR$/Treinamento.py" />
         <option value="$PROJECT_DIR$/Operador.py" />
+        <option value="$PROJECT_DIR$/docs/index.md" />
       </list>
     </option>
   </component>
@@ -224,16 +219,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/index.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1140">
-            <caret line="76" column="4" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rec-facial.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -273,8 +258,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Operador.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+        <state relative-caret-position="207">
+          <caret line="79" column="16" lean-forward="true" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
           <folding>
             <element signature="e#47#84#0" expanded="true" />
             <element signature="e#424#731#0" />
@@ -286,7 +271,18 @@
             <element signature="e#2528#2678#0" />
             <element signature="e#2710#2763#0" />
             <element signature="e#2808#3682#0" />
+            <element signature="e#3727#8497#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="75">
+            <caret line="5" selection-start-line="5" selection-end-line="5" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
