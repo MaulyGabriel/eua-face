@@ -22,7 +22,7 @@ def check_sum(hexadecimal):
     validator = 0
 
     for char in str(hexadecimal):
-        validator = validator ^ ord(char)
+        validator ^= ord(char)
 
     var = ''
 
@@ -110,7 +110,6 @@ def send_message(board, message, tempo):
 
 
 def load_models():
-
     codes = np.load('/home/pi/Alice/models/codes.npy')
     names = np.load('/home/pi/Alice/models/names.npy')
     images = np.load('/home/pi/Alice/models/images.npy')
@@ -119,7 +118,6 @@ def load_models():
 
 
 def load_models_pc():
-
     codes = np.load('models/codes.npy')
     names = np.load('models/names.npy')
     images = np.load('models/images.npy')
@@ -134,7 +132,6 @@ def alter_turn(timeout):
 
 
 def read_serial(board, flags, conn):
-
     print('serial starting ...')
 
     while True:
@@ -142,37 +139,43 @@ def read_serial(board, flags, conn):
 
         while flags[0]:
 
-            if board.inWaiting() > 0:
+            try:
 
-                message = board.readline().decode("utf-8", "replace")
+                if board.inWaiting() > 0:
 
-                if message[:8] == '$PNEUL,C':
+                    message = board.readline().decode("utf-8", "replace")
 
-                    send_message(board, '$PNEUDOK,46\r\n', 1)
+                    if message[:8] == '$PNEUL,C':
 
-                    idx = message.find('*')
+                        send_message(board, '$PNEUDOK,46\r\n', 1)
 
-                    if idx != -1:
+                        idx = message.find('*')
 
-                        if check_sum(message[:idx]) == message[idx + 1:idx + 3]:
+                        if idx != -1:
 
-                            if message[9] == '0':
+                            if check_sum(message[:idx]) == message[idx + 1:idx + 3]:
 
-                                flags[1] = 0
-                                flags[2] = 1
+                                if message[9] == '0':
 
-                                conn.send(message)
-                            elif message[9] == '1':
+                                    flags[1] = 0
+                                    flags[2] = 1
 
-                                flags[1] = 0
-                                flags[3] = 1
+                                    conn.send(message)
+                                elif message[9] == '1':
 
-                            else:
-                                pass
+                                    flags[1] = 0
+                                    flags[3] = 1
+
+                                else:
+                                    pass
+
+            except UnicodeEncodeError:
+                print('Received message has coding error')
+            except IOError:
+                print('The cable has been disconnected')
 
 
 def recognition(board, flags, conn):
-
     print('recognition starting ....')
 
     old_operator = 0
@@ -323,7 +326,6 @@ def recognition(board, flags, conn):
 
 
 if __name__ == '__main__':
-
     board = init_board()
 
     receive, send = mp.Pipe()
