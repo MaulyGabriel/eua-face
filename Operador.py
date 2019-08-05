@@ -44,8 +44,7 @@ def init_board():
         os.system('sudo chmod -R 777 /dev/ttyUSB0')
 
         port = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, parity=serial.PARITY_NONE,
-                             stopbits=serial.STOPBITS_ONE,
-                             bytesize=serial.EIGHTBITS, timeout=1)
+            stopbits=serial.STOPBITS_ONE, bytesize=serial.EIGHTBITS, timeout=1)
 
         return port
 
@@ -100,6 +99,7 @@ def wait_ok(message, tempo):
 
 
 def send_message(board, message, tempo):
+
     board.write(message.encode())
 
     if message[6] == ',':
@@ -110,9 +110,9 @@ def send_message(board, message, tempo):
 
 
 def load_models():
-    codes = np.load('/home/pi/Alice/models/codes.npy')
-    names = np.load('/home/pi/Alice/models/names.npy')
-    images = np.load('/home/pi/Alice/models/images.npy')
+    codes = np.load('models/codes.npy')
+    names = np.load('models/names.npy')
+    images = np.load('models/images.npy')
 
     return codes, names, images
 
@@ -207,8 +207,8 @@ def recognition(board, flags, conn):
 
             if frame.any():
 
-                codes = list(np.load('/home/pi/Alice/models/codigos.npy'))
-                names = list(np.load('/home/pi/Alice/models/nomes.npy'))
+                codes = list(np.load('models/codigos.npy'))
+                names = list(np.load('models/nomes.npy'))
 
                 list_data = split_string(list_data, ',')
 
@@ -221,12 +221,12 @@ def recognition(board, flags, conn):
                     idx = codes.index(code)
                     nome = names[idx]
 
-                    if os.path.isfile('/home/pi/Alice/images/' + code + '.' + nome + '.jpg'):
-                        shutil.move('/home/pi/Alice/images/' + code + '.' + nome + '.jpg',
-                                    '/home/pi/Alice/images/olds/' + code + '.' + nome + '.' + time.strftime(
+                    if os.path.isfile('images/' + code + '.' + nome + '.jpg'):
+                        shutil.move('images/' + code + '.' + nome + '.jpg',
+                                    'images/olds/' + code + '.' + nome + '.' + time.strftime(
                                         "%Y%m%d%H%M") + '.jpg')
 
-                cv2.imwrite('/home/pi/Alice/images/' + code + '.' + list_data[4] + '.jpg', photo)
+                cv2.imwrite('images/' + code + '.' + list_data[4] + '.jpg', photo)
 
                 hexadecimal = '$PNEUD,C,0,' + code + ',' + list_data[4] + ',*' + check_sum(
                     '$PNEUD,C,0,' + code + ',' + list_data[4] + ',') + '\r\n'
