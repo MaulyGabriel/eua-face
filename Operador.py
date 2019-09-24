@@ -186,7 +186,7 @@ def recognition(board, flags, conn):
 
     codes, names, images = load_models()
 
-    vs = WebcamVideoStream(src=0).start()
+    vs = WebcamVideoStream(src=1).start()
     fps = FPS().start()
 
     while True:
@@ -322,6 +322,12 @@ def recognition(board, flags, conn):
                     not_detected = 0
                 else:
                     not_detected += 1
+
+            cv2.imshow('image', frame)
+
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+
         fps.update()
 
 

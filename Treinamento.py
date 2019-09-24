@@ -73,10 +73,15 @@ def train_pc():
             print(data[1], ": success")
 
         else:
-            print(file, ': error')
+            print(file[7:], ': error')
 
     np.save('models/images.npy', faces)
     np.save('models/codes.npy', codes)
     np.save('models/names.npy', names)
 
-    print('Train end: ', time() - init)
+    print('Train end: ', round(time() - init, 2))
+
+
+if __name__ == '__main__':
+
+    train_pc()
