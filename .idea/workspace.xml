@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8634894-51de-49e9-9f69-862a69e7efb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/1110.BRANDON.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1111.BRENDAN.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1112.BRICE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1113.CHASE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1114.CLINT.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1115.GARY.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1116.MIKE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1117.RICH.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1118.TREVOR.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/1119.ZACH.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Operador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Operador.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Treinamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/Treinamento.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/1157.ALAIN DOMINGUEZ.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/old/1157.ALAIN DOMINGUEZ.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/1170.RENE GONZALEZ.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/old/1170.RENE GONZALEZ.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/1175.GABRIEL MAULY.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/old/1175.GABRIEL MAULY.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/codes.npy" beforeDir="false" afterPath="$PROJECT_DIR$/models/codes.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/images.npy" beforeDir="false" afterPath="$PROJECT_DIR$/models/images.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/names.npy" beforeDir="false" afterPath="$PROJECT_DIR$/models/names.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1115.GARY.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/images/1115.GARY.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/1920.ERICK.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
